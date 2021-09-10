@@ -1,0 +1,62 @@
+//todo colors
+$scrollbar: rgb(145, 136, 136);
+
+/*.........................................*/
+
+.todosection {
+  display: flex;
+  flex-direction: column;
+  width: 260px;
+  min-width: 260px;
+  height: fit-content;
+  max-height: 80%;
+  background-color: #ebecf0;
+  border-radius: 5px;
+}
+.todosection_title {
+  width: 100%;
+  margin: 0 0 8px;
+  // margin-top: 5px;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  // padding: 0.2rem;
+  padding-top: 0.4rem;
+
+  span {
+    // margin: -4px 0;
+    padding: 4px 8px;
+  }
+}
+
+.todosection_tasks {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 100%;
+  min-height: 30px;
+  overflow-y: scroll;
+}
+.todosection_tasks::-webkit-scrollbar {
+  width: 8px;
+}
+.todosection_tasks::-webkit-scrollbar-track {
+  background-color: rgb(192, 190, 190);
+  border-radius: 5px;
+}
+.todosection_tasks::-webkit-scrollbar-thumb {
+  width: 8px;
+  background-color: $scrollbar;
+  border-radius: 5px;
+}
+.todosection_add-icon {
+  display: flex;
+  align-content: center;
+  justify-content: flex-end;
+  background-color: #ebecf0;
+  padding: 0.3rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}

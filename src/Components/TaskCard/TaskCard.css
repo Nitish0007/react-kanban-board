@@ -1,0 +1,59 @@
+.taskcard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 5px;
+  width: 240px;
+  -webkit-box-shadow: 0 1px 0 #091e4240;
+          box-shadow: 0 1px 0 #091e4240;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.taskcard:hover {
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+}
+
+.taskcard_image {
+  height: 100px;
+  width: 100%;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.taskcard_data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0.1rem;
+  margin: 0.2rem;
+}
+
+.taskcard_task-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.5rem;
+  color: grey;
+}
+
+.taskcard_task-info_main-span {
+  font-size: small;
+}
+
+.taskcard_task-info_main-span_heading {
+  font-weight: bolder;
+}
+/*# sourceMappingURL=TaskCard.css.map */
