@@ -13,7 +13,7 @@ const FormDialog = (props) => {
         aria-labelledby="form-dialog-title"
       >
         <DialogContent>
-          <h2 style={{ margin: "5px", textAlign: "center" }}>Task Info</h2>
+          <h2 style={{ margin: "5px", textAlign: "center" }}>Card Info</h2>
           {/* <img src={props.info?.image} /> */}
           <div
             style={{
@@ -24,7 +24,7 @@ const FormDialog = (props) => {
             }}
           >
             <label style={{ fontWeight: "bolder", color: "grey" }}>
-              Task Title
+              Card Title
             </label>
             <p>{props.info?.taskTitle}</p>
           </div>

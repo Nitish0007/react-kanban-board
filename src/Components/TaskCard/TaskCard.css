@@ -9,6 +9,7 @@
   background-color: #ffffff;
   border-radius: 5px;
   width: 240px;
+  font-size: 16px;
   -webkit-box-shadow: 0 1px 0 #091e4240;
           box-shadow: 0 1px 0 #091e4240;
   -webkit-transition: all 0.3s;
@@ -47,6 +48,7 @@
   display: flex;
   padding: 0.5rem;
   color: grey;
+  gap: 7px;
 }
 
 .taskcard_task-info_main-span {

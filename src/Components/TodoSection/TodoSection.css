@@ -7,12 +7,15 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 260px;
   min-width: 260px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  max-height: 80%;
+  max-height: 85%;
   background-color: #ebecf0;
   border-radius: 5px;
 }
@@ -20,7 +23,7 @@
 .todosection_title {
   width: 100%;
   margin: 0 0 8px;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 24px;
   font-weight: 400;
   padding-top: 0.4rem;
@@ -45,33 +48,33 @@
           align-items: flex-end;
   height: 100%;
   min-height: 30px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .todosection_tasks::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 
 .todosection_tasks::-webkit-scrollbar-track {
   background-color: #c0bebe;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .todosection_tasks::-webkit-scrollbar-thumb {
-  width: 8px;
+  width: 5px;
   background-color: #918888;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 .todosection_add-icon {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  width: 100%;
+  -webkit-box-pack: end !important;
+      -ms-flex-pack: end !important;
+          justify-content: flex-end !important;
+  gap: 12px;
   background-color: #ebecf0;
   padding: 0.3rem;
   border-bottom-left-radius: 10px;

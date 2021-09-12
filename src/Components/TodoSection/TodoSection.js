@@ -57,8 +57,14 @@ function TodoSection(props) {
         })}
       </div>
       <div className="todosection_add-icon">
-        <DeleteIcon onClick={() => props.deleteCard(props.id)} />
-        <AddCircleIcon onClick={handleClickOpen} />
+        <DeleteIcon
+          style={{ cursor: "pointer" }}
+          onClick={() => props.deleteCard(props.id)}
+        />
+        <AddCircleIcon
+          style={{ cursor: "pointer" }}
+          onClick={handleClickOpen}
+        />
       </div>
       <FormDialog
         isOpen={openPopup}

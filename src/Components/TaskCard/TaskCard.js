@@ -54,10 +54,15 @@ function TaskCard(props) {
         </span>
 
         <div className="taskcard_task-info">
-          <DescriptionIcon fontSize="small" onClick={() => handleClickOpen()} />
+          <DescriptionIcon
+            fontSize="medium"
+            style={{ cursor: "pointer" }}
+            onClick={() => handleClickOpen()}
+          />
           {/* <AttachFileIcon fontSize="small" onClick={() => handleClickOpen()} /> */}
           <DeleteIcon
-            fontSize="small"
+            fontSize="medium"
+            style={{ cursor: "pointer" }}
             onClick={() => props.deleteTask(props.info?.id)}
           />
         </div>

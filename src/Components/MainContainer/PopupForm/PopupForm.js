@@ -20,7 +20,7 @@ export default function FormDialog(props) {
             autoFocus
             margin="dense"
             id="name"
-            label="Card Title"
+            label="Board Title"
             type="Cardtitle"
             fullWidth
             defaultValue={value}

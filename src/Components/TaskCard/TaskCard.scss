@@ -4,6 +4,7 @@
   background-color: #ffffff;
   border-radius: 5px;
   width: 240px;
+  font-size: 16px;
   // box-shadow: 0px 1px 1px rgb(170, 168, 168);
   box-shadow: 0 1px 0 #091e4240;
   transition: all 0.3s;
@@ -28,6 +29,7 @@
   display: flex;
   padding: 0.5rem;
   color: grey;
+  gap: 7px;
 }
 .taskcard_task-info_main-span {
   font-size: small;
