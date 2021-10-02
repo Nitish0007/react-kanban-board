@@ -1,9 +1,9 @@
 .App {
   height: 100vh;
   width: 100%;
-  background: url("https://images.unsplash.com/photo-1457365050282-c53d772ef8b2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHVsdHJhJTIwaGQlMjBmb3IlMjBkZXZlbG9wbWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+  /* background: url("https://images.unsplash.com/photo-1457365050282-c53d772ef8b2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHVsdHJhJTIwaGQlMjBmb3IlMjBkZXZlbG9wbWVudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-position-y: bottom;
+  background-position-y: bottom; */
 }

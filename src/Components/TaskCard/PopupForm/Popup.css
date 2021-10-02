@@ -1,0 +1,30 @@
+.popup-title {
+  margin: 5px;
+  text-align: center;
+}
+
+.card-title {
+  background-color: #e3e3e3;
+  padding: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 3px;
+}
+
+.item-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  gap: 5px;
+}
+
+.popup_labels {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5px;
+}
+/*# sourceMappingURL=Popup.css.map */

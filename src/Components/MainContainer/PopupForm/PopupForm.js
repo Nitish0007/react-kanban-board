@@ -4,6 +4,9 @@ import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
+import { Clipboard } from "react-feather";
+
+import "./Popup.css";
 
 export default function FormDialog(props) {
   const [value, setValue] = React.useState("");
@@ -16,6 +19,11 @@ export default function FormDialog(props) {
         aria-labelledby="form-dialog-title"
       >
         <DialogContent>
+          <h3 className="board-header">Add Board</h3>
+          <div className="board-header_item">
+            <Clipboard />
+            <label className="board-header_title">Board Title</label>
+          </div>
           <TextField
             autoFocus
             margin="dense"

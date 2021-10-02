@@ -13,6 +13,7 @@ $scrollbar: rgb(145, 136, 136);
   max-height: 85%;
   background-color: #ebecf0;
   border-radius: 5px;
+  box-shadow: 0 0 10px 0 #b8c6db;
 }
 .todosection_title {
   width: 100%;
@@ -21,7 +22,7 @@ $scrollbar: rgb(145, 136, 136);
   line-height: 24px;
   font-weight: 400;
   padding-top: 0.4rem;
-
+  color: #000;
   span {
     padding: 4px 8px;
   }

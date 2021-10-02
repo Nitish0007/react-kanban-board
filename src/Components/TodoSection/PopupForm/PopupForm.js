@@ -4,26 +4,47 @@ import Dialog from "@material-ui/core/Dialog";
 import TextField from "@material-ui/core/TextField";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
+import { Type, AlignLeft, Tag } from "react-feather";
+import { Chip } from "@material-ui/core";
+
+import "./PopupForm.css";
 
 const FormDialog = (props) => {
-  // let getFile;
-  // const [fileDetected, setFiledetected] = React.useState(false);
+  const labelColors = ["#77c593", "#1e847f", "#e52165", "#12a4d9", "#e0a96d"];
+
   const [taskTitle, setTaskTitle] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [errorMsg, setErrorMsg] = useState({
+    type: "",
+    message: "",
+  });
   const [desc, setDesc] = useState("");
-  // const uploadImage = (files) => {
-  //   if (!files) return;
-  //   getFile = files;
-  //   console.log(getFile);
-  //   const formData = new FormData();
-  //   formData.append("image", files);
-  //   console.log(files);
-  //   if (!files) {
-  //     setFiledetected(true);
-  //   } else {
-  //     setFiledetected(false);
-  //   }
-  // };
+  const [color, setColor] = useState("");
+  const [currLabels, setCurrLabels] = useState({ id: "", text: "", color: "" });
+  const [labelArray, setLabelArray] = useState([]);
+
+  const addLabels = (e) => {
+    e.preventDefault();
+    if (labelArray.length === 5) {
+      setErrorMsg({
+        type: "label",
+        message: "Maximum number of labels : 5",
+      });
+      return;
+    }
+    const dummyLabels = [...labelArray];
+    dummyLabels.push(currLabels);
+    setLabelArray(dummyLabels);
+    setColor("");
+  };
+
+  const deleteLabel = (id) => {
+    const labelIndex = labelArray.findIndex((label) => label.id === id);
+    if (labelIndex > -1) {
+      const dummyLabels = [...labelArray];
+      dummyLabels.splice(labelIndex, 1);
+      setLabelArray(dummyLabels);
+    }
+  };
 
   return (
     <div>
@@ -33,77 +54,107 @@ const FormDialog = (props) => {
         aria-labelledby="form-dialog-title"
       >
         <DialogContent>
-          <h2 style={{ margin: "5px", textAlign: "center" }}>Add Card</h2>
-
-          {/* <input
-            type="file"
-            onChange={(e) => {
-              e.preventDefault();
-              uploadImage(e.target.files);
-            }}
-            accept=".gif,.jpg,.jpeg,.png,.doc,.docx"
-          />
-          <button style={{ display: !fileDetected ? "none" : "block" }}>
-            Upload
-          </button> */}
-          <div
-            style={{
-              display: "flex",
-              marginTop: "10px",
-              flexDirection: "column",
-              gap: "5px",
-            }}
-          >
-            <label style={{ fontWeight: "bolder", color: "grey" }}>
-              Card Title
-            </label>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              placeholder="Task Title"
-              type="TaskTitle"
-              fullWidth
-              defaultValue={taskTitle}
-              onChange={(e) => setTaskTitle(e.target.value)}
-            />
+          <h2 className="popup-title">Add Card</h2>
+          <div className="item-header">
+            <Type size={20} />
+            <label className="item-header_label">Card Title</label>
           </div>
-          {errorMsg ? (
-            <p style={{ fontWeight: "bold", color: "red" }}>{errorMsg}</p>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            placeholder="Card Title"
+            type="TaskTitle"
+            fullWidth
+            defaultValue={taskTitle}
+            onChange={(e) => setTaskTitle(e.target.value)}
+          />
+          {errorMsg && errorMsg.type === "title" ? (
+            <p style={{ fontWeight: "bold", color: "red" }}>
+              {errorMsg.message}
+            </p>
           ) : (
             ""
           )}
-          <div
-            style={{
-              display: "flex",
-              marginTop: "10px",
-              flexDirection: "column",
-              gap: "5px",
+          <div className="item-header">
+            <AlignLeft size={20} />
+            <label className="item-header_label">Description</label>
+          </div>
+          <textarea
+            placeholder="Description"
+            className="desc"
+            defaultValue={desc}
+            onChange={(e) => setDesc(e.target.value)}
+          />
+          <div className="item-header">
+            <Tag size={20} />
+            <label className="item-header_label">Labels</label>
+          </div>
+          <div className="item-header_label_chips">
+            {labelArray?.map((label) => (
+              <Chip
+                label={label.text}
+                size="small"
+                onDelete={() => {
+                  deleteLabel(label.id);
+                }}
+                style={{ backgroundColor: `${label.color}` }}
+              />
+            ))}
+          </div>
+          {errorMsg && errorMsg.type === "label" ? (
+            <p style={{ fontWeight: "bold", color: "red" }}>
+              {errorMsg.message}
+            </p>
+          ) : (
+            ""
+          )}
+          <form
+            onSubmit={(e) => {
+              addLabels(e);
             }}
           >
-            <label style={{ fontWeight: "bolder", color: "grey" }}>
-              Description
-            </label>
-            <textarea
-              autoFocus
-              placeholder="Description"
-              style={{
-                height: "140px",
-                width: "300px",
-                resize: "none",
-                outline: "none",
-                border: "1px solid #eeeee",
-              }}
-              defaultValue={desc}
-              onChange={(e) => setDesc(e.target.value)}
-            />
-          </div>
+            <div>
+              <div className="item-header_colors">
+                {labelColors.map((item, i) => (
+                  <li
+                    className={`item-header_item ${
+                      item === color ? "active" : ""
+                    }`}
+                    key={i}
+                    onClick={(e) => {
+                      setColor(item);
+                    }}
+                    style={{ backgroundColor: `${item}` }}
+                  ></li>
+                ))}
+              </div>
+              <TextField
+                margin="dense"
+                id="name"
+                placeholder="Add label"
+                type="tags"
+                fullWidth
+                defautValue={currLabels.text}
+                onBlur={(e) => {
+                  setCurrLabels({
+                    id: Date.now() + Math.random() * 34,
+                    text: e.target.value,
+                    color,
+                  });
+                  // e.target.value = "";
+                }}
+              />
+              <button type="submit" className="item-header_label_btn">
+                Add Label
+              </button>
+            </div>
+          </form>
         </DialogContent>
         <DialogActions>
           <Button
             onClick={() => {
               props.handleClose();
-              // setFiledetected(false);
               setDesc("");
               setTaskTitle("");
             }}
@@ -114,17 +165,19 @@ const FormDialog = (props) => {
           <Button
             onClick={() => {
               if (taskTitle === "") {
-                setErrorMsg("Enter Title of Your Task");
+                setErrorMsg({
+                  type: "title",
+                  message: "Enter Title of Your Task",
+                });
                 return;
               }
               props.handleClose();
-              // setFiledetected(false);
               setDesc("");
               setTaskTitle("");
               const newTask = {
                 parentID: props.parentID + "",
-                // image: getFile,
                 desc: desc,
+                labelArray,
                 taskTitle: taskTitle,
               };
               props.addTask(newTask);

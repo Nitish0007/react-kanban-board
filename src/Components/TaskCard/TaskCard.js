@@ -1,24 +1,27 @@
 import React, { useState } from "react";
 import DescriptionIcon from "@material-ui/icons/Description";
-// import AttachFileIcon from "@material-ui/icons/AttachFile";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 import { connect } from "react-redux";
 
 import "./TaskCard.css";
 import FormDialog from "./PopupForm/PopupForm";
+import { Chip } from "@material-ui/core";
 
 function TaskCard(props) {
   const [openPopup, setOpenPopup] = useState(false);
 
   const dragStart = (info) => {
+    console.log(info.labelArray);
     if (!info) return;
     const dataTransfer = {
       image: info.image,
       desc: info.desc,
+      labelArray: info.labelArray,
       parentID: info.parentID + "",
       id: info.id + "",
       taskTitle: info.taskTitle,
+      labelArray: info.labelArray,
     };
     props.drag_start(dataTransfer);
     return dataTransfer;
@@ -36,17 +39,25 @@ function TaskCard(props) {
     <div
       className="taskcard"
       draggable
-      onDragStart={(e) => dragStart(props.info)}
+      onDragStart={(e) => {
+        dragStart(props.info);
+      }}
     >
-      {/* <img
-        src={props.info?.image}
-        className={props.info?.image ? "taskcard_image" : ""}
-      ></img> */}
       <div className="taskcard_data">
+        <div className="taskcard_data_labels">
+          {props.info?.labelArray?.map((label) => (
+            <Chip
+              label={label.text}
+              size="small"
+              style={{ backgroundColor: `${label.color}` }}
+            />
+          ))}
+        </div>
         <span
           style={{
             height: "fit-content",
             width: "85%",
+            fontWeight: "bold",
           }}
           className="taskcard_task"
         >
@@ -59,7 +70,6 @@ function TaskCard(props) {
             style={{ cursor: "pointer" }}
             onClick={() => handleClickOpen()}
           />
-          {/* <AttachFileIcon fontSize="small" onClick={() => handleClickOpen()} /> */}
           <DeleteIcon
             fontSize="medium"
             style={{ cursor: "pointer" }}

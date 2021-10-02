@@ -71,6 +71,7 @@ function MainContainer(props) {
         parentID: targetID + "",
         image: props.draggedItem.image,
         taskTitle: props.draggedItem.taskTitle,
+        labelArray: props.draggedItem.labelArray,
       });
       setTasks(array);
     }
@@ -83,7 +84,6 @@ function MainContainer(props) {
       id: Math.floor(Date.now() + Math.random() * 43) + "",
     });
     setTasks(dummytasks);
-    console.log(dummytasks);
   };
   const deleteCard = (cardID) => {
     const dummytasks = [...tasks];
@@ -103,11 +103,14 @@ function MainContainer(props) {
     <div className="main-container">
       <div className="main-container_title">
         <h1>Kanban board</h1>
-        <AddCircleOutlineIcon onClick={handleOpen} />
+        <AddCircleOutlineIcon
+          onClick={handleOpen}
+          className="main-container_addIcon"
+        />
       </div>
       <div className="main-container_body">
         {cards.length > 0 &&
-          cards?.map((card, i) => (
+          cards?.map((card) => (
             <TodoSection
               cardData={card}
               key={card.id}
